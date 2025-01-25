@@ -4,31 +4,28 @@ document.querySelectorAll('header nav a').forEach(link => {
         event.preventDefault();
         const targetId = link.getAttribute('href').substring(1);
         const targetElement = document.getElementById(targetId);
-
         if (targetElement) {
             targetElement.scrollIntoView({ behavior: 'smooth' });
         }
     });
 });
 
-// Dynamic greeting based on the time of day
-function updateGreeting() {
-    const hour = new Date().getHours();
-    const greetingText = document.querySelector('.hero h1');
-    
-    if (hour < 12) {
-        greetingText.textContent = 'Good Morning! Welcome to Digital Academic Submission System';
-    } else if (hour < 18) {
-        greetingText.textContent = 'Good Afternoon! Welcome to Digital Academic Submission System';
-    } else {
-        greetingText.textContent = 'Good Evening! Welcome to Digital Academic Submission System';
-    }
-}
-
-// Button click alert
-document.querySelector('.btn').addEventListener('click', () => {
-    alert('Discover our features to simplify your academic submissions!');
+// Contact form submission alert
+document.getElementById('contact-form').addEventListener('submit', event => {
+    event.preventDefault();
+    alert('Thank you for contacting us. We will get back to you shortly!');
 });
 
-// Call functions on page load
-window.onload = updateGreeting;
+// Dynamic hero greeting
+window.onload = function() {
+    const greetingText = document.querySelector('.hero h1');
+    const hour = new Date().getHours();
+
+    if (hour < 12) {
+        greetingText.textContent = 'Good Morning! Welcome to DASS';
+    } else if (hour < 18) {
+        greetingText.textContent = 'Good Afternoon! Welcome to DASS';
+    } else {
+        greetingText.textContent = 'Good Evening! Welcome to DASS';
+    }
+};
